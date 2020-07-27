@@ -8,10 +8,10 @@ public class TC03 extends BaseTest {
         System.out.println("TC03: User cannot log into Railway with invalid password");
 
         HomePage hompage = new HomePage();
-        hompage.open();
+        hompage.Open();
 
         LoginPage loginpage = hompage.gotoLoginPage();
-        loginpage.login(Constant.username,"111");
+        loginpage.Login(Constant.USERNAME,"111");
 
         String actualMessage = loginpage.getGeneralErrorMsg().getText();
         String expectedMessage = "Invalid username or password. Please try again.";

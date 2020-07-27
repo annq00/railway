@@ -2,8 +2,8 @@ import Constant.Constant;
 
 public class HomePage extends GeneralPage {
 
-    public HomePage open(){
-        Constant.webdriver.navigate().to(Constant.railway_url);
+    public HomePage Open(){
+        Constant.WEBDRIVER.navigate().to(Constant.RAILWAY_URL);
         return this;
     }
 }

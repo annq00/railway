@@ -7,58 +7,62 @@ import java.time.Duration;
 
 public class GeneralPage {
     //Elements
-    protected JavascriptExecutor js = (JavascriptExecutor) Constant.webdriver;
-    protected WebDriverWait wait = new WebDriverWait(Constant.webdriver,20);
-    protected Wait fluentwait = new FluentWait<WebDriver>(Constant.webdriver).withTimeout(Duration.ofSeconds(20))
+    protected JavascriptExecutor js = (JavascriptExecutor) Constant.WEBDRIVER;
+    protected WebDriverWait wait = new WebDriverWait(Constant.WEBDRIVER,20);
+    protected Wait fluentWait = new FluentWait<WebDriver>(Constant.WEBDRIVER).withTimeout(Duration.ofSeconds(20))
             .pollingEvery(Duration.ofSeconds(4)).ignoring(StaleElementReferenceException.class);
 
     protected WebElement getTabHome(){
-       return Constant.webdriver.findElement(By.xpath("//div[@id='menu']//span[text()='Home']"));
+       return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='menu']//span[text()='Home']"));
     }
 
     protected WebElement getTabLogin(){
-       return Constant.webdriver.findElement(By.xpath("//div[@id='menu']//span[text()='Login']"));
+       return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='menu']//span[text()='Login']"));
     }
 
     protected WebElement getWelcomeMessageLbl () {
-        return Constant.webdriver.findElement(By.xpath("//div[@id='banner']//strong"));
+        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='banner']//strong"));
     }
 
     protected WebElement getTabBookticket(){
-        return Constant.webdriver.findElement(By.xpath("//div[@id='menu']//span[text()='Book ticket']"));
+        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='menu']//span[text()='Book ticket']"));
     }
 
     protected WebElement getPageHeader(){
-        return Constant.webdriver.findElement(By.xpath("//div[@id='content']/h1"));
+        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='content']/h1"));
     }
 
     protected WebElement getTabContact(){
-        return Constant.webdriver.findElement(By.xpath("//div[@id='menu']//span[text()='Contact']"));
+        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='menu']//span[text()='Contact']"));
     }
 
     protected WebElement getTabLogOut(){
-        return Constant.webdriver.findElement(By.xpath("//div[@id='menu']//span[text()='Log out']"));
+        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='menu']//span[text()='Log out']"));
     }
 
     protected WebElement getTabRegister(){
-        return Constant.webdriver.findElement(By.xpath("//div[@id='menu']//span[text()='Register']"));
+        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='menu']//span[text()='Register']"));
     }
 
     protected WebElement getSuccessfullyCreateAccountMsg(){
-        return Constant.webdriver.findElement(By.xpath("//p[contains(text(),'Registration Confirmed')]"));
+        return Constant.WEBDRIVER.findElement(By.xpath("//p[contains(text(),'Registration Confirmed')]"));
     }
 
     protected WebElement getChangePasswordTab(){
-        return Constant.webdriver.findElement(By.xpath("//div[@id='menu']//span[text()='Change password']"));
+        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='menu']//span[text()='Change password']"));
 
     }
 
     protected  WebElement getTimetableTab(){
-        return Constant.webdriver.findElement(By.xpath("//div[@id='menu']//span[text()='Timetable']"));
+        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='menu']//span[text()='Timetable']"));
     }
 
     protected WebElement getMyTicketTab(){
-        return Constant.webdriver.findElement(By.xpath("//div[@id='menu']//span[text()='My ticket']"));
+        return Constant.WEBDRIVER.findElement(By.xpath("//div[@id='menu']//span[text()='My ticket']"));
+    }
+
+    protected WebElement getPageFooter(){
+        return Constant.WEBDRIVER.findElement(By.cssSelector("#footer"));
     }
 
     //Methods
@@ -93,7 +97,7 @@ public class GeneralPage {
         return new RegisterPage();
     }
 
-    public ChangePasswordPage gotoChangePaswordPage(){
+    public ChangePasswordPage gotoChangePasswordPage(){
         getChangePasswordTab().click();
         return new ChangePasswordPage();
 
@@ -113,11 +117,11 @@ public class GeneralPage {
         return getPageHeader().getText();
     }
 
-    public void selectCombobox(WebElement combobox, String value){
-        wait.until(ExpectedConditions.elementToBeClickable(combobox));
-        Select selectbox = new Select(combobox);
-        fluentwait.until(ExpectedConditions.elementToBeClickable(combobox));
-        selectbox.selectByVisibleText(value);
+    public void SelectCombobox(WebElement comboBox, String value){
+        wait.until(ExpectedConditions.elementToBeClickable(comboBox));
+        Select selectBox = new Select(comboBox);
+        fluentWait.until(ExpectedConditions.elementToBeClickable(comboBox));
+        selectBox.selectByVisibleText(value);
     }
 
 

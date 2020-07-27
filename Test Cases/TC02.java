@@ -8,10 +8,10 @@ public class TC02 extends BaseTest {
         System.out.println("TC02: User can't login with blank 'Username' textbox");
 
         HomePage homepage = new HomePage();
-        homepage.open();
+        homepage.Open();
 
         LoginPage loginpage = homepage.gotoLoginPage();
-        loginpage.login("", Constant.password);
+        loginpage.Login("", Constant.PASSWORD);
 
         String actualMessage = loginpage.getGeneralErrorMsg().getText();
         String expectedMessage = "There was a problem with your login and/or errors exist in your form.";

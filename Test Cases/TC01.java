@@ -8,12 +8,12 @@ public class TC01 extends BaseTest {
         System.out.println("TC01: User can log into Railway with valid username and password");
 
         HomePage homepage = new HomePage();
-        homepage.open();
+        homepage.Open();
 
         LoginPage loginpage = homepage.gotoLoginPage();
 
-        String actualMessage = loginpage.login(Constant.username,Constant.password).getWelcomeMessageLbl().getText();
-        String expectedMessage = "Welcome " + Constant.username;
+        String actualMessage = loginpage.Login(Constant.USERNAME,Constant.PASSWORD).getWelcomeMessageLbl().getText();
+        String expectedMessage = "Welcome " + Constant.USERNAME;
         Assert.assertEquals(actualMessage,expectedMessage,"Welcome message is not displayed as expected!");
     }
 }

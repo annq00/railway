@@ -2,47 +2,46 @@ import Constant.Constant;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 
 public class BookTicketPage extends GeneralPage {
 
     //Elements
     protected WebElement getDepartDateBox() {
-        return Constant.webdriver.findElement(By.xpath("//select[@name='Date']"));
+        return Constant.WEBDRIVER.findElement(By.xpath("//select[@name='Date']"));
     }
 
     protected WebElement getDepartFromBox(){
-        return Constant.webdriver.findElement(By.xpath("//select[@name='DepartStation']"));
+        return Constant.WEBDRIVER.findElement(By.xpath("//select[@name='DepartStation']"));
     }
 
     protected  WebElement getArriveAtBox(){
-        return Constant.webdriver.findElement(By.xpath("//select[@name='ArriveStation']"));
+        return Constant.WEBDRIVER.findElement(By.xpath("//select[@name='ArriveStation']"));
     }
 
     protected  WebElement getSeatTypeBox(){
-        return Constant.webdriver.findElement(By.xpath("//select[@name='SeatType']"));
+        return Constant.WEBDRIVER.findElement(By.xpath("//select[@name='SeatType']"));
     }
 
     protected  WebElement getTicketAmountBox(){
-        return Constant.webdriver.findElement(By.xpath("//select[@name='TicketAmount']"));
+        return Constant.WEBDRIVER.findElement(By.xpath("//select[@name='TicketAmount']"));
     }
 
     protected  WebElement getBookTicketBtn(){
 
-        return Constant.webdriver.findElement(By.xpath("//input"));
+        return Constant.WEBDRIVER.findElement(By.xpath("//input"));
     }
 
 
     //Methods
-    public BookTicketSuccessPage bookticket(String departdate, String departfrom, String arriveat, String seattype, String ticketamount){
+    public BookTicketSuccessPage BookTicket(String departDate, String departFrom, String arriveAt, String seatType, String ticketAmount){
 
-        js.executeScript("arguments[0].scrollIntoView(true)",Constant.webdriver.findElement(By.cssSelector("#footer")));
+        js.executeScript("arguments[0].scrollIntoView(true)",getPageFooter());
 
-        selectCombobox(getDepartDateBox(),departdate);
-        selectCombobox(getDepartFromBox(),departfrom);
-        selectCombobox(getSeatTypeBox(),seattype);
-        selectCombobox(getTicketAmountBox(),ticketamount);
-        selectCombobox(getArriveAtBox(),arriveat);
+        SelectCombobox(getDepartDateBox(),departDate);
+        SelectCombobox(getDepartFromBox(),departFrom);
+        SelectCombobox(getSeatTypeBox(),seatType);
+        SelectCombobox(getTicketAmountBox(),ticketAmount);
+        SelectCombobox(getArriveAtBox(),arriveAt);
 
         wait.until(ExpectedConditions.elementToBeClickable(getBookTicketBtn()));
         getBookTicketBtn().click();

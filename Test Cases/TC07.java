@@ -8,7 +8,7 @@ public class TC07 extends BaseTest {
 
         System.out.println("TC07: User can create new account");
 
-        HomePage homepage = new HomePage().open();
+        HomePage homepage = new HomePage().Open();
 
         RegisterPage registerpage = homepage.gotoRegisterPage();
 

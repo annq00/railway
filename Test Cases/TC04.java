@@ -8,13 +8,13 @@ public class TC04 extends BaseTest {
         System.out.println("TC04: User is redirected to Book ticket page after logging in");
 
         HomePage hompage = new HomePage();
-        hompage.open();
+        hompage.Open();
 
         String pageheader1 = hompage.gotoBookticketPage().currentPageHeader();
 
         if(pageheader1.equalsIgnoreCase("Login page")){
             LoginPage loginpage = new LoginPage();
-            String pageheader2 = loginpage.login(Constant.username,Constant.password).currentPageHeader();
+            String pageheader2 = loginpage.Login(Constant.USERNAME,Constant.PASSWORD).currentPageHeader();
             Assert.assertEquals(pageheader2,"Book ticket","Book Ticket page is not display as expected!");
         }
         else {

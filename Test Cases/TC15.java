@@ -7,13 +7,13 @@ public class TC15 extends BaseTest {
     public void TC15(){
         System.out.println("TC15: 'Ticket price' page displays with ticket details after clicking on 'check price' link in 'Train timetable' page");
 
-        HomePage homepage = new HomePage().open();
+        HomePage homepage = new HomePage().Open();
 
         LoginPage loginpage = homepage.gotoLoginPage();
 
-        TimetablePage timetablepage = loginpage.login(Constant.username,Constant.password).gotoTimetablePage();
+        TimetablePage timetablepage = loginpage.Login(Constant.USERNAME,Constant.PASSWORD).gotoTimetablePage();
 
-        TicketPricePage ticketpricepage = timetablepage.clickCheckPriceLink(Constant.checkpricedepartstation,Constant.checkpricearrivestation);
+        TicketPricePage ticketpricepage = timetablepage.ClickCheckPriceLink(Constant.checkpricedepartstation,Constant.checkpricearrivestation);
 
         String actualpageheader = ticketpricepage.currentPageHeader();
 

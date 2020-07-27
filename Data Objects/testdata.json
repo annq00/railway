@@ -1,0 +1,48 @@
+[
+  [
+  {
+    "prices": {
+      "departure": "Sài Gòn",
+      "arrival": "Phan Thiết",
+      "HS": "90000",
+      "SS": "115000",
+      "SSC": "140000",
+      "HB": "190000",
+      "SB": "240000",
+      "SBC":"290000"
+    }
+  },
+  {
+    "prices": {
+      "departure": "Đà Nẵng",
+      "arrival": "Sài Gòn",
+      "HS": "310000",
+      "SS": "335000",
+      "SSC": "360000",
+      "HB": "410000",
+      "SB": "460000",
+      "SBC":"510000"
+    }
+  }
+],
+[
+  {
+    "tickets": {
+      "departdate": "8/1/2020",
+      "departure": "Sài Gòn",
+      "arrival": "Phan Thiết",
+      "seattype": "Hard seat",
+      "ticketamount": "1"
+    }
+  },
+  {
+    "tickets": {
+      "departdate": "8/18/2020",
+      "departure": "Nha Trang",
+      "arrival": "Sài Gòn",
+      "seattype": "Soft seat with air conditioner",
+      "ticketamount": "5"
+    }
+  }
+]
+]

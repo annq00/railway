@@ -7,15 +7,15 @@ public class TC06 extends BaseTest {
     @Test
     public void TC06(){
         System.out.println("TC06: User is redirected to Home page after logging out");
-        HomePage homepage = new HomePage().open();
+        HomePage homepage = new HomePage().Open();
 
         LoginPage loginpage = homepage.gotoLoginPage();
 
-        ContactPage contactpage = loginpage.login(Constant.username, Constant.password).gotoContactPage();
+        ContactPage contactpage = loginpage.Login(Constant.USERNAME, Constant.PASSWORD).gotoContactPage();
 
         HomePage newpage = contactpage.Logout();
 
-        if(Constant.webdriver.findElements(By.xpath("//div[@id='menu']//span[text()='Log out']")).isEmpty()){
+        if(Constant.WEBDRIVER.findElements(By.xpath("//div[@id='menu']//span[text()='Log out']")).isEmpty()){
             String pageheader = newpage.currentPageHeader();
             Assert.assertEquals(pageheader,"Welcome to Safe Railway","HomePage is not displayed as expected");
         }

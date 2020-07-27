@@ -1,27 +1,21 @@
 import Constant.Constant;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.util.concurrent.TimeUnit;
-
-import static Constant.Constant.webdriver;
 
 public class TC14 extends BaseTest {
     @Test
     public void TC14() throws InterruptedException{
         System.out.println("TC14: User can book many tickets at a time");
 
-        HomePage homepage = new HomePage().open();
+        HomePage homepage = new HomePage().Open();
 
         LoginPage loginpage = homepage.gotoLoginPage();
 
-        loginpage.login(Constant.username,Constant.password).gotoBookticketPage();
+        loginpage.Login(Constant.USERNAME,Constant.PASSWORD).gotoBookticketPage();
 
         BookTicketPage bookticketpage = new BookTicketPage();
 
-        BookTicketSuccessPage successpage = bookticketpage.bookticket(Constant.departdate,Constant.departfrom,Constant.arriveat,Constant.seattype,Constant.ticketamount);
+        BookTicketSuccessPage successpage = bookticketpage.BookTicket(Constant.departdate,Constant.departfrom,Constant.arriveat,Constant.seattype,Constant.ticketamount);
 
         String actualheader = successpage.currentPageHeader();
 
@@ -35,7 +29,7 @@ public class TC14 extends BaseTest {
 
         MyTicketPage myticketpage = successpage.gotoMyTicketPage();
 
-        myticketpage.cancelTicket(Constant.departfrom,Constant.arriveat,Constant.seattype,Constant.departdate,"New",Constant.ticketamount);
+        myticketpage.CancelTicket(Constant.departfrom,Constant.arriveat,Constant.seattype,Constant.departdate,"New",Constant.ticketamount);
 
         Thread.sleep(800);
     }

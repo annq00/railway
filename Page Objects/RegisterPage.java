@@ -8,45 +8,45 @@ public class RegisterPage extends GeneralPage {
 
     protected WebElement getRegEmailTxt(){
 
-        return Constant.webdriver.findElement(By.cssSelector("#email"));
+        return Constant.WEBDRIVER.findElement(By.cssSelector("#email"));
     }
 
     protected WebElement getRegPasswordTxt(){
 
-        return Constant.webdriver.findElement(By.cssSelector("#password"));
+        return Constant.WEBDRIVER.findElement(By.cssSelector("#password"));
     }
 
     protected WebElement getRegConfirmPaswordTxt(){
-        return Constant.webdriver.findElement(By.cssSelector("#confirmPassword"));
+        return Constant.WEBDRIVER.findElement(By.cssSelector("#confirmPassword"));
     }
 
     protected WebElement getPIDTxt(){
 
-        return Constant.webdriver.findElement(By.cssSelector("#pid"));
+        return Constant.WEBDRIVER.findElement(By.cssSelector("#pid"));
     }
 
     protected WebElement getRegisterBtn(){
-        return Constant.webdriver.findElement(By.cssSelector("input[value='Register']"));
+        return Constant.WEBDRIVER.findElement(By.cssSelector("input[value='Register']"));
     }
 
     protected WebElement getRegisterErrorMsg(){
-        return Constant.webdriver.findElement(By.cssSelector("p[class*='message']"));
+        return Constant.WEBDRIVER.findElement(By.cssSelector("p[class*='message']"));
 
     }
 
     protected  WebElement getPasswordErrorMsg(){
-        return Constant.webdriver.findElement(By.cssSelector("label[for='password'][class='validation-error']"));
+        return Constant.WEBDRIVER.findElement(By.cssSelector("label[for='password'][class='validation-error']"));
     }
 
     protected  WebElement getPIDErrorMsg(){
-        return Constant.webdriver.findElement(By.cssSelector("label[for='pid'][class='validation-error']"));
+        return Constant.WEBDRIVER.findElement(By.cssSelector("label[for='pid'][class='validation-error']"));
     }
 
     //Methods
 
     public void CreateAccount(String email, String password, String pid){
 
-        js.executeScript("arguments[0].scrollIntoView(true)",Constant.webdriver.findElement(By.cssSelector("#footer")));
+        js.executeScript("arguments[0].scrollIntoView(true)", getPageFooter());
 
         getRegEmailTxt().clear();
         getRegPasswordTxt().clear();
