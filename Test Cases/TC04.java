@@ -7,14 +7,14 @@ public class TC04 extends BaseTest {
     public void TC04(){
         System.out.println("TC04: User is redirected to Book ticket page after logging in");
 
-        HomePage hompage = new HomePage();
-        hompage.Open();
+        HomePage hompage = new HomePage(driver);
+        hompage.open();
 
-        String pageheader1 = hompage.gotoBookticketPage().currentPageHeader();
+        String pageheader1 = hompage.gotoBookticketPage(driver).currentPageHeader(driver);
 
         if(pageheader1.equalsIgnoreCase("Login page")){
-            LoginPage loginpage = new LoginPage();
-            String pageheader2 = loginpage.Login(Constant.USERNAME,Constant.PASSWORD).currentPageHeader();
+            LoginPage loginpage = new LoginPage(driver);
+            String pageheader2 = loginpage.login(Constant.USERNAME,Constant.PASSWORD).currentPageHeader(driver);
             Assert.assertEquals(pageheader2,"Book ticket","Book Ticket page is not display as expected!");
         }
         else {

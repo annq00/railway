@@ -8,23 +8,23 @@ public class TC16 extends BaseTest {
 
         System.out.println("TC16: User can cancel a ticket");
 
-        HomePage homepage = new HomePage().Open();
+        HomePage homepage = new HomePage(driver).open();
 
-        LoginPage loginpage = homepage.gotoLoginPage();
+        LoginPage loginpage = homepage.gotoLoginPage(driver);
 
-        loginpage.Login(Constant.USERNAME, Constant.PASSWORD).gotoBookticketPage();
+        loginpage.login(Constant.USERNAME, Constant.PASSWORD).gotoBookticketPage(driver);
 
-        BookTicketPage bookticketpage = new BookTicketPage();
+        BookTicketPage bookticketpage = new BookTicketPage(driver);
 
-        BookTicketSuccessPage successpage = bookticketpage.BookTicket(Constant.departdate,Constant.departfrom,Constant.arriveat,Constant.seattype,Constant.ticketamount);
+        BookTicketSuccessPage successpage = bookticketpage.bookTicket(bookticketpage.departDate2,bookticketpage.departFrom2,bookticketpage.arriveAt2,bookticketpage.seatType2,bookticketpage.ticketAmount2);
 
-        MyTicketPage myticketpage = successpage.gotoMyTicketPage();
+        MyTicketPage myticketpage = successpage.gotoMyTicketPage(driver);
 
-        myticketpage.CancelTicket(Constant.departfrom,Constant.arriveat,Constant.seattype,Constant.departdate,"New",Constant.ticketamount);
+        myticketpage.cancelTicket(myticketpage.departFrom2,myticketpage.arriveAt2,myticketpage.seatType2,myticketpage.departDate2,"New",myticketpage.ticketAmount2);
 
         Thread.sleep(800);
 
-        Assert.assertTrue(myticketpage.findCancelButtons(Constant.departfrom,Constant.arriveat,Constant.seattype,Constant.departdate,"New",Constant.ticketamount).isEmpty());
+        Assert.assertTrue(myticketpage.findCancelButtons(myticketpage.departFrom2,myticketpage.arriveAt2,myticketpage.seatType2,myticketpage.departDate2,"New",myticketpage.ticketAmount2).isEmpty());
 
     }
 }

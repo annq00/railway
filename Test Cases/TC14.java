@@ -7,31 +7,27 @@ public class TC14 extends BaseTest {
     public void TC14() throws InterruptedException{
         System.out.println("TC14: User can book many tickets at a time");
 
-        HomePage homepage = new HomePage().Open();
+        HomePage homepage = new HomePage(driver).open();
 
-        LoginPage loginpage = homepage.gotoLoginPage();
+        LoginPage loginpage = homepage.gotoLoginPage(driver);
 
-        loginpage.Login(Constant.USERNAME,Constant.PASSWORD).gotoBookticketPage();
+        loginpage.login(Constant.USERNAME,Constant.PASSWORD).gotoBookticketPage(driver);
 
-        BookTicketPage bookticketpage = new BookTicketPage();
+        BookTicketPage bookticketpage = new BookTicketPage(driver);
 
-        BookTicketSuccessPage successpage = bookticketpage.BookTicket(Constant.departdate,Constant.departfrom,Constant.arriveat,Constant.seattype,Constant.ticketamount);
+        BookTicketSuccessPage successpage = bookticketpage.bookTicket(bookticketpage.departDate1,bookticketpage.departFrom1,bookticketpage.arriveAt1,bookticketpage.seatType1,bookticketpage.ticketAmount1);
 
-        String actualheader = successpage.currentPageHeader();
+        String actualheader = successpage.currentPageHeader(driver);
 
-        Assert.assertEquals(successpage.getSuccessTableColumnText("Depart Date"),Constant.departdate);
-        Assert.assertEquals(successpage.getSuccessTableColumnText("Depart Station"),Constant.departfrom);
-        Assert.assertEquals(successpage.getSuccessTableColumnText("Arrive Station"),Constant.arriveat);
-        Assert.assertEquals(successpage.getSuccessTableColumnText("Seat Type"),Constant.seattype);
-        Assert.assertEquals(successpage.getSuccessTableColumnText("Amount"),Constant.ticketamount);
+        Assert.assertEquals(successpage.getSuccessTableColumnText("Depart Date"),bookticketpage.departDate1);
+        Assert.assertEquals(successpage.getSuccessTableColumnText("Depart Station"),bookticketpage.departFrom1);
+        Assert.assertEquals(successpage.getSuccessTableColumnText("Arrive Station"),bookticketpage.arriveAt1);
+        Assert.assertEquals(successpage.getSuccessTableColumnText("Seat Type"),bookticketpage.seatType1);
+        Assert.assertEquals(successpage.getSuccessTableColumnText("Amount"),bookticketpage.ticketAmount1);
 
         Assert.assertEquals(actualheader,"Ticket booked successfully!","Success Page is not displayed as expected!");
 
-        MyTicketPage myticketpage = successpage.gotoMyTicketPage();
-
-        myticketpage.CancelTicket(Constant.departfrom,Constant.arriveat,Constant.seattype,Constant.departdate,"New",Constant.ticketamount);
-
-        Thread.sleep(800);
+        cancelTickets("New");
     }
 
 

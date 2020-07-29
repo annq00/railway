@@ -7,11 +7,11 @@ public class TC11 extends BaseTest {
     public void TC11(){
         System.out.println("TC11: User can't create account while password and PID fields are empty");
 
-        HomePage homepage = new HomePage().Open();
+        HomePage homepage = new HomePage(driver).open();
 
-        RegisterPage registerpage = homepage.gotoRegisterPage();
+        RegisterPage registerpage = homepage.gotoRegisterPage(driver);
 
-        registerpage.CreateAccount(Utilities.generateRandomString(6)+"a@.com","","");
+        registerpage.createAccount(Utilities.generateRandomString(6)+"a@.com","","");
 
         String actualGeneralErrorMsg = registerpage.getRegisterErrorMsg().getText();
         String actualPasswordErrorMsg = registerpage.getPasswordErrorMsg().getText();

@@ -8,13 +8,13 @@ public class TC07 extends BaseTest {
 
         System.out.println("TC07: User can create new account");
 
-        HomePage homepage = new HomePage().Open();
+        HomePage homepage = new HomePage(driver).open();
 
-        RegisterPage registerpage = homepage.gotoRegisterPage();
+        RegisterPage registerpage = homepage.gotoRegisterPage(driver);
 
-        registerpage.CreateAccount(Utilities.generateRandomString(6)+"@a.com",Utilities.generateRandomString(8),Utilities.generateRandomString(10));
+        registerpage.createAccount(Utilities.generateRandomString(6)+"@a.com",Utilities.generateRandomString(8),Utilities.generateRandomString(10));
 
-        String successfullMsg = registerpage.getSuccessfullyCreateAccountMsg().getText();
+        String successfullMsg = registerpage.getSuccessfullyCreateAccountMsg(driver).getText();
 
         Assert.assertEquals(successfullMsg,"Registration Confirmed! You can now log in to the site.","Message is not displayed as expected!");
 

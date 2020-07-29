@@ -7,28 +7,28 @@ public class TC15 extends BaseTest {
     public void TC15(){
         System.out.println("TC15: 'Ticket price' page displays with ticket details after clicking on 'check price' link in 'Train timetable' page");
 
-        HomePage homepage = new HomePage().Open();
+        HomePage homepage = new HomePage(driver).open();
 
-        LoginPage loginpage = homepage.gotoLoginPage();
+        LoginPage loginpage = homepage.gotoLoginPage(driver);
 
-        TimetablePage timetablepage = loginpage.Login(Constant.USERNAME,Constant.PASSWORD).gotoTimetablePage();
+        TimetablePage timetablepage = loginpage.login(Constant.USERNAME,Constant.PASSWORD).gotoTimetablePage(driver);
 
-        TicketPricePage ticketpricepage = timetablepage.ClickCheckPriceLink(Constant.checkpricedepartstation,Constant.checkpricearrivestation);
+        TicketPricePage ticketpricepage = timetablepage.clickCheckPriceLink(timetablepage.departStation,timetablepage.arriveStation);
 
-        String actualpageheader = ticketpricepage.currentPageHeader();
+        String actualpageheader = ticketpricepage.currentPageHeader(driver);
 
         String actualtableheader = ticketpricepage.getTicketPriceTableHeader().getText();
 
-        String expectedtableheader = "Ticket price from "+Constant.checkpricedepartstation+" to "+Constant.checkpricearrivestation;
+        String expectedtableheader = "Ticket price from "+ticketpricepage.departStation+" to "+ticketpricepage.arriveStation;
 
 
         Assert.assertEquals(actualpageheader,"Ticket Price","Ticket Price is not displayed as expected!");
         Assert.assertEquals(actualtableheader,expectedtableheader,"Check Price Table Header is not displayed as expected!");
-        Assert.assertEquals(ticketpricepage.getTicketPriceBySeat("HS"),"310000");
-        Assert.assertEquals(ticketpricepage.getTicketPriceBySeat("SS"),"335000");
-        Assert.assertEquals(ticketpricepage.getTicketPriceBySeat("SSC"),"360000");
-        Assert.assertEquals(ticketpricepage.getTicketPriceBySeat("HB"),"410000");
-        Assert.assertEquals(ticketpricepage.getTicketPriceBySeat("SB"),"460000");
-        Assert.assertEquals(ticketpricepage.getTicketPriceBySeat("SBC"),"510000");
+        Assert.assertEquals(ticketpricepage.getTicketPriceBySeat("HS"),ticketpricepage.priceHS);
+        Assert.assertEquals(ticketpricepage.getTicketPriceBySeat("SS"),ticketpricepage.priceSS);
+        Assert.assertEquals(ticketpricepage.getTicketPriceBySeat("SSC"),ticketpricepage.priceSSC);
+        Assert.assertEquals(ticketpricepage.getTicketPriceBySeat("HB"),ticketpricepage.priceHB);
+        Assert.assertEquals(ticketpricepage.getTicketPriceBySeat("SB"),ticketpricepage.priceSB);
+        Assert.assertEquals(ticketpricepage.getTicketPriceBySeat("SBC"),ticketpricepage.priceSBC);
     }
 }

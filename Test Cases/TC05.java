@@ -8,13 +8,13 @@ public class TC05 extends BaseTest {
     public void TC05(){
         System.out.println("TC05: System shows message when user enters wrong password several times");
 
-        HomePage hompage = new HomePage();
-        hompage.Open();
+        HomePage hompage = new HomePage(driver);
+        hompage.open();
 
-        LoginPage loginpage = hompage.gotoLoginPage();
+        LoginPage loginpage = hompage.gotoLoginPage(driver);
         int count = 0;
         while(count < 4 ) {
-            loginpage.Login(Constant.USERNAME, "111");
+            loginpage.login(Constant.USERNAME, "111");
             count+=1;
         }
         String actualMessage = loginpage.getGeneralErrorMsg().getText();

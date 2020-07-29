@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Selenium Exercise" >
+<suite name="Selenium Exercise"  >
 
     <test name="Railway" >
         <parameter name="browser" value="chrome"/>
-
         <classes>
             <class name="TC01" />
             <class name="TC02" />
@@ -20,8 +19,10 @@
             <class name="TC14" />
             <class name="TC15" />
             <class name="TC16" />
+
         </classes>
     </test>
+
 
 
 

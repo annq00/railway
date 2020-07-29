@@ -1,5 +1,4 @@
 import Constant.Constant;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -7,16 +6,16 @@ public class TC06 extends BaseTest {
     @Test
     public void TC06(){
         System.out.println("TC06: User is redirected to Home page after logging out");
-        HomePage homepage = new HomePage().Open();
+        HomePage homepage = new HomePage(driver).open();
 
-        LoginPage loginpage = homepage.gotoLoginPage();
+        LoginPage loginpage = homepage.gotoLoginPage(driver);
 
-        ContactPage contactpage = loginpage.Login(Constant.USERNAME, Constant.PASSWORD).gotoContactPage();
+        ContactPage contactpage = loginpage.login(Constant.USERNAME, Constant.PASSWORD).gotoContactPage(driver);
 
-        HomePage newpage = contactpage.Logout();
+        HomePage newpage = contactpage.Logout(driver);
 
-        if(Constant.WEBDRIVER.findElements(By.xpath("//div[@id='menu']//span[text()='Log out']")).isEmpty()){
-            String pageheader = newpage.currentPageHeader();
+        if(newpage.getTabsLogout(driver).isEmpty()){
+            String pageheader = newpage.currentPageHeader(driver);
             Assert.assertEquals(pageheader,"Welcome to Safe Railway","HomePage is not displayed as expected");
         }
         else{

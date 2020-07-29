@@ -8,11 +8,11 @@ public class TC10 extends BaseTest {
     public void TC10(){
         System.out.println("TC10: User can't create account with an already in-use email");
 
-        HomePage homepage = new HomePage().Open();
+        HomePage homepage = new HomePage(driver).open();
 
-        RegisterPage registerpage = homepage.gotoRegisterPage();
+        RegisterPage registerpage = homepage.gotoRegisterPage(driver);
 
-        registerpage.CreateAccount(Constant.USERNAME,Constant.PASSWORD, Utilities.generateRandomString(10));
+        registerpage.createAccount(Constant.USERNAME,Constant.PASSWORD, Utilities.generateRandomString(10));
 
         String actualMsg  = registerpage.getRegisterErrorMsg().getText();
         String expectedMsg = "This email address is already in use.";

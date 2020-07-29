@@ -9,13 +9,13 @@ public class TC09 extends BaseTest {
     public void TC09(){
         System.out.println("User can't change password when 'New Password' and 'Confirm Password' are different.");
 
-        HomePage hompage = new HomePage().Open();
+        HomePage hompage = new HomePage(driver).open();
 
-        LoginPage loginpage = hompage.gotoLoginPage();
+        LoginPage loginpage = hompage.gotoLoginPage(driver);
 
-        ChangePasswordPage changepasswordpage = loginpage.Login(Constant.USERNAME, Constant.PASSWORD).gotoChangePasswordPage();
+        ChangePasswordPage changepasswordpage = loginpage.login(Constant.USERNAME, Constant.PASSWORD).gotoChangePasswordPage(driver);
 
-        changepasswordpage.ChangePassword(Constant.PASSWORD,Constant.NEWPASSWORD, Utilities.generateRandomString(8));
+        changepasswordpage.changePassword(Constant.PASSWORD,Constant.NEWPASSWORD, Utilities.generateRandomString(8));
 
         String actualMsg = changepasswordpage.getChangePasswordMsg().getText();
 

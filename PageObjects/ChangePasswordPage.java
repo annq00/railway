@@ -1,34 +1,39 @@
 import Constant.Constant;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class ChangePasswordPage extends GeneralPage {
+    
+    public ChangePasswordPage (WebDriver webDriver){
+        this.driver = webDriver;
+    }
 
     //Elements
     protected WebElement getCurrentPasswordTxt(){
-        return Constant.WEBDRIVER.findElement(By.cssSelector("#currentPassword"));
+        return this.driver.findElement(By.cssSelector("#currentPassword"));
     }
 
     protected WebElement getNewPasswordTxt(){
-        return Constant.WEBDRIVER.findElement(By.cssSelector("#newPassword"));
+        return this.driver.findElement(By.cssSelector("#newPassword"));
     }
 
     protected  WebElement getConfirmPassword(){
-        return Constant.WEBDRIVER.findElement(By.cssSelector("#confirmPassword"));
+        return this.driver.findElement(By.cssSelector("#confirmPassword"));
     }
 
     protected WebElement getChangePasswordBtn(){
-        return Constant.WEBDRIVER.findElement(By.cssSelector("input[value='Change Password']"));
+        return this.driver.findElement(By.cssSelector("input[value='Change Password']"));
     }
 
     protected WebElement getChangePasswordMsg(){
-        return Constant.WEBDRIVER.findElement(By.cssSelector("p[class*='message']"));
+        return this.driver.findElement(By.cssSelector("p[class*='message']"));
     }
 
     //Methods
-    public void ChangePassword(String currentPassword, String newPassword, String confirmPassword){
+    public void changePassword(String currentPassword, String newPassword, String confirmPassword){
 
-        js.executeScript("arguments[0].scrollIntoView(true)",getPageFooter());
+        script(driver).executeScript("arguments[0].scrollIntoView(true)",getPageFooter(driver));
 
         getCurrentPasswordTxt().clear();
         getNewPasswordTxt().clear();
