@@ -7,28 +7,34 @@ public class TC15 extends BaseTest {
     public void TC15(){
         System.out.println("TC15: 'Ticket price' page displays with ticket details after clicking on 'check price' link in 'Train timetable' page");
 
-        HomePage homepage = new HomePage(driver).open();
+        System.out.println("Step 1: Navigate to Railway's HomePage");
+        HomePage homePage = new HomePage(driver).open();
 
-        LoginPage loginpage = homepage.gotoLoginPage(driver);
+        System.out.println("Step 2: Go to Login Page");
+        LoginPage loginPage = homePage.gotoLoginPage(driver);
 
-        TimetablePage timetablepage = loginpage.login(Constant.USERNAME,Constant.PASSWORD).gotoTimetablePage(driver);
+        System.out.println("Step 3: Login with a registered account");
+        GeneralPage newPage = loginPage.login(Constant.USERNAME,Constant.PASSWORD).gotoTimetablePage(driver);
 
-        TicketPricePage ticketpricepage = timetablepage.clickCheckPriceLink(timetablepage.departStation,timetablepage.arriveStation);
+        System.out.println("Step 4: Go to Timetable Page");
+        TimetablePage timetablePage = newPage.gotoTimetablePage(driver);
 
-        String actualpageheader = ticketpricepage.currentPageHeader(driver);
+        System.out.println("Step 4: Click a 'check price' link");
+        TicketPricePage ticketPricePage = timetablePage.clickCheckPriceLink(timetablePage.departStation,timetablePage.arriveStation);
 
-        String actualtableheader = ticketpricepage.getTicketPriceTableHeader().getText();
+        System.out.println("Step 5: Verify that Ticket Price Page is displayed");
+        String actualPageHeader = ticketPricePage.currentPageHeader(driver);
+        String actualTableHeader = ticketPricePage.getTicketPriceTableHeader().getText();
+        String expectedTableHeader = "Ticket price from "+ticketPricePage.departStation+" to "+ticketPricePage.arriveStation;
+        Assert.assertEquals(actualPageHeader,"Ticket Price","Ticket Price is not displayed as expected!");
+        Assert.assertEquals(actualTableHeader,expectedTableHeader,"Check Price Table Header is not displayed as expected!");
 
-        String expectedtableheader = "Ticket price from "+ticketpricepage.departStation+" to "+ticketpricepage.arriveStation;
-
-
-        Assert.assertEquals(actualpageheader,"Ticket Price","Ticket Price is not displayed as expected!");
-        Assert.assertEquals(actualtableheader,expectedtableheader,"Check Price Table Header is not displayed as expected!");
-        Assert.assertEquals(ticketpricepage.getTicketPriceBySeat("HS"),ticketpricepage.priceHS);
-        Assert.assertEquals(ticketpricepage.getTicketPriceBySeat("SS"),ticketpricepage.priceSS);
-        Assert.assertEquals(ticketpricepage.getTicketPriceBySeat("SSC"),ticketpricepage.priceSSC);
-        Assert.assertEquals(ticketpricepage.getTicketPriceBySeat("HB"),ticketpricepage.priceHB);
-        Assert.assertEquals(ticketpricepage.getTicketPriceBySeat("SB"),ticketpricepage.priceSB);
-        Assert.assertEquals(ticketpricepage.getTicketPriceBySeat("SBC"),ticketpricepage.priceSBC);
+        System.out.println("Step 6: Verify that Ticket details are displayed correctly");
+        Assert.assertEquals(ticketPricePage.getTicketPriceBySeat("HS"),ticketPricePage.priceHS);
+        Assert.assertEquals(ticketPricePage.getTicketPriceBySeat("SS"),ticketPricePage.priceSS);
+        Assert.assertEquals(ticketPricePage.getTicketPriceBySeat("SSC"),ticketPricePage.priceSSC);
+        Assert.assertEquals(ticketPricePage.getTicketPriceBySeat("HB"),ticketPricePage.priceHB);
+        Assert.assertEquals(ticketPricePage.getTicketPriceBySeat("SB"),ticketPricePage.priceSB);
+        Assert.assertEquals(ticketPricePage.getTicketPriceBySeat("SBC"),ticketPricePage.priceSBC);
     }
 }

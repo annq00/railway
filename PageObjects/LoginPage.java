@@ -8,24 +8,24 @@ public class LoginPage extends GeneralPage {
     private WebDriver driver;
     
     public LoginPage(WebDriver webDriver){
-        this.driver = webDriver;
+        driver = webDriver;
     }
 
     //Elements
     public WebElement getUsernameTxt() {
-        return this.driver.findElement(By.xpath("//input[@id='username']"));
+        return driver.findElement(By.xpath("//input[@id='username']"));
     }
 
     public WebElement getPasswordTxt() {
-        return this.driver.findElement(By.xpath("//input[@id='password']"));
+        return driver.findElement(By.xpath("//input[@id='password']"));
     }
 
     public WebElement getLoginBtn() {
-        return this.driver.findElement(By.xpath("//input[@title='Login']"));
+        return driver.findElement(By.xpath("//input[@title='Login']"));
     }
 
     public WebElement getGeneralErrorMsg(){
-        return this.driver.findElement(By.xpath("//p[@class='message error LoginForm']"));
+        return driver.findElement(By.xpath("//p[@class='message error LoginForm']"));
     }
 
     //Methods
@@ -42,6 +42,14 @@ public class LoginPage extends GeneralPage {
         return new GeneralPage(driver);
     }
 
+    public void loginMultipleTime(int time, String username, String password){
+        int count = 0;
+        LoginPage loginPage = new LoginPage(driver);
+        while(count < time ) {
+            loginPage.login(username, password);
+            count+=1;
+        }
 
+    }
 
 }

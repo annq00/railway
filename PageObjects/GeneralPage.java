@@ -5,6 +5,7 @@ import org.openqa.selenium.support.ui.*;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class GeneralPage {
@@ -37,13 +38,8 @@ public class GeneralPage {
     protected String priceSBC = Utilities.getDataTest(jsonFile,checkPrice, "SBC");
 
     public GeneralPage(WebDriver webDriver){
-        this.driver = webDriver;
+        driver = webDriver;
     }
-
-//        JavascriptExecutor js = (JavascriptExecutor) driver;
-//        WebDriverWait wait = new WebDriverWait(driver, 20);
-//        Wait fluentWait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(20))
-//                .pollingEvery(Duration.ofSeconds(4)).ignoring(StaleElementReferenceException.class);
 
     public GeneralPage() {
     }
@@ -52,13 +48,12 @@ public class GeneralPage {
         return (JavascriptExecutor) webDriver;
     }
 
-    WebDriverWait wait (WebDriver webDriver){
-        return new WebDriverWait(webDriver, 20);
+    public WebDriverWait explicitWait(WebDriver webDriver){
+        return new WebDriverWait(webDriver, Constant.SMALLNUM);
     }
 
-    Wait fluentWait (WebDriver webDriver){
-        return new FluentWait<WebDriver>(webDriver).withTimeout(Duration.ofSeconds(20))
-                .pollingEvery(Duration.ofSeconds(4)).ignoring(StaleElementReferenceException.class);
+    public Wait fluentWait (WebDriver webDriver){
+        return new FluentWait<WebDriver>(webDriver).withTimeout(Duration.ofSeconds(Constant.SMALLNUM)).pollingEvery(Duration.ofMillis(Constant.SHORTWAIT)).ignoring(StaleElementReferenceException.class);
     }
 
     //Elements
@@ -121,8 +116,6 @@ public class GeneralPage {
 
     //Methods
 
-
-
     public HomePage gotoHomePage(WebDriver webDriver){
         getTabHome(webDriver).click();
         return new HomePage(webDriver);
@@ -173,16 +166,9 @@ public class GeneralPage {
         return getPageHeader(webDriver).getText();
     }
 
-    public void selectCombobox(WebDriver webDriver, WebElement comboBox, String value) throws InterruptedException {
 
-        wait(webDriver).until(ExpectedConditions.elementToBeClickable(comboBox));
+    public void selectCombobox(WebElement comboBox, String value) {
         Select selectBox = new Select(comboBox);
-
-        Thread.sleep(400);
-
-        fluentWait(webDriver).until(ExpectedConditions.elementToBeClickable(comboBox));
         selectBox.selectByVisibleText(value);
     }
-
-
 }

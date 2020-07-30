@@ -6,28 +6,28 @@ import org.openqa.selenium.WebElement;
 public class ChangePasswordPage extends GeneralPage {
     
     public ChangePasswordPage (WebDriver webDriver){
-        this.driver = webDriver;
+        driver = webDriver;
     }
 
     //Elements
     protected WebElement getCurrentPasswordTxt(){
-        return this.driver.findElement(By.cssSelector("#currentPassword"));
+        return driver.findElement(By.cssSelector("#currentPassword"));
     }
 
     protected WebElement getNewPasswordTxt(){
-        return this.driver.findElement(By.cssSelector("#newPassword"));
+        return driver.findElement(By.cssSelector("#newPassword"));
     }
 
     protected  WebElement getConfirmPassword(){
-        return this.driver.findElement(By.cssSelector("#confirmPassword"));
+        return driver.findElement(By.cssSelector("#confirmPassword"));
     }
 
     protected WebElement getChangePasswordBtn(){
-        return this.driver.findElement(By.cssSelector("input[value='Change Password']"));
+        return driver.findElement(By.cssSelector("input[value='Change Password']"));
     }
 
     protected WebElement getChangePasswordMsg(){
-        return this.driver.findElement(By.cssSelector("p[class*='message']"));
+        return driver.findElement(By.cssSelector("p[class*='message']"));
     }
 
     //Methods

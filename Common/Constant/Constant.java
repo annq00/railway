@@ -17,5 +17,9 @@ public class Constant {
     public static final String PASSWORD ="11111111";
     public static final String NEWPASSWORD = "22222222";
     public static final String RAILWAY_URL = "http://railwayqa.somee.com/";
-
+    public static final int SMALLNUM = 4;
+    public static final int MEDIUMNUM = 10;
+    public static final int BIGNUM = 30;
+    public static final int SHORTWAIT = 400;
+    public static final int MEDIUMWAIT = 1000;
 }

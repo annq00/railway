@@ -6,11 +6,18 @@ import org.json.simple.parser.ParseException;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 public class Utilities {
     public static String generateRandomString(int length){
-        char[] keys = "QWERTYUIOPASDFGHJKLZXCVBNM0123456789qwertyuiopasdfghjklzxcvbnm".toCharArray();
+
+        SimpleDateFormat formatter = new SimpleDateFormat("EEddMMMMyyyyHHmmss");
+        Date date = new Date();
+        String dateTime = formatter.format(date);
+
+        char[] keys = dateTime.toCharArray();
 
         StringBuilder sb = new StringBuilder();
 

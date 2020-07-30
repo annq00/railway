@@ -1,16 +1,20 @@
 import Common.Utilities;
+import Constant.Constant;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.annotations.*;
+
+import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
     WebDriver driver;
     @Parameters({"browser"})
-    @BeforeMethod
-    public void BeforeMethod(String browser){
+    @BeforeClass
+    public void BeforeClass(String browser){
         System.out.println("Pre-Condition");
 
         if(browser.equalsIgnoreCase("chrome")) {
@@ -25,20 +29,20 @@ public class BaseTest {
         driver.manage().window().maximize();
     }
 
-    @AfterMethod
-    public void AfterMethod(){
+    @AfterClass
+    public void AfterClass(){
         System.out.println("Post-Condition");
         driver.quit();
     }
 
-    public void cancelTickets(String status) throws InterruptedException {
+    public void cancelTickets(String departFrom, String arriveAt, String seatType, String departDate, String status, String ticketAmount) {
 
-        GeneralPage successpage = new GeneralPage(driver);
+        GeneralPage successPage = new GeneralPage(driver);
 
-        MyTicketPage myticketpage = successpage.gotoMyTicketPage(driver);
+        MyTicketPage myTicketPage = successPage.gotoMyTicketPage(driver);
 
-        myticketpage.cancelTicket(myticketpage.departFrom1,myticketpage.arriveAt1,myticketpage.seatType1,myticketpage.departDate1,status,myticketpage.ticketAmount1);
+        myTicketPage.cancelTicket(departFrom,arriveAt,seatType,departDate,status,ticketAmount);
 
-        Thread.sleep(800);
+        myTicketPage.explicitWait(driver).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@value = 'Apply filter']")));
     }
 }

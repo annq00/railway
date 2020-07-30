@@ -6,45 +6,45 @@ import org.openqa.selenium.WebElement;
 public class RegisterPage extends GeneralPage {
     
     public RegisterPage(WebDriver webDriver){
-        this.driver = webDriver;
+        driver = webDriver;
     }
 
     //Elements
 
     protected WebElement getRegEmailTxt(){
 
-        return this.driver.findElement(By.cssSelector("#email"));
+        return driver.findElement(By.cssSelector("#email"));
     }
 
     protected WebElement getRegPasswordTxt(){
 
-        return this.driver.findElement(By.cssSelector("#password"));
+        return driver.findElement(By.cssSelector("#password"));
     }
 
     protected WebElement getRegConfirmPaswordTxt(){
-        return this.driver.findElement(By.cssSelector("#confirmPassword"));
+        return driver.findElement(By.cssSelector("#confirmPassword"));
     }
 
     protected WebElement getPIDTxt(){
 
-        return this.driver.findElement(By.cssSelector("#pid"));
+        return driver.findElement(By.cssSelector("#pid"));
     }
 
     protected WebElement getRegisterBtn(){
-        return this.driver.findElement(By.cssSelector("input[value='Register']"));
+        return driver.findElement(By.cssSelector("input[value='Register']"));
     }
 
     protected WebElement getRegisterErrorMsg(){
-        return this.driver.findElement(By.cssSelector("p[class*='message']"));
+        return driver.findElement(By.cssSelector("p[class*='message']"));
 
     }
 
     protected  WebElement getPasswordErrorMsg(){
-        return this.driver.findElement(By.cssSelector("label[for='password'][class='validation-error']"));
+        return driver.findElement(By.cssSelector("label[for='password'][class='validation-error']"));
     }
 
     protected  WebElement getPIDErrorMsg(){
-        return this.driver.findElement(By.cssSelector("label[for='pid'][class='validation-error']"));
+        return driver.findElement(By.cssSelector("label[for='pid'][class='validation-error']"));
     }
 
     //Methods

@@ -1,17 +1,17 @@
 {
   "ticket1": {
-    "departdate": "8/1/2020",
+    "departdate": "8/10/2020",
     "departure": "Sài Gòn",
     "arrival": "Phan Thiết",
     "seattype": "Hard seat",
-    "ticketamount": "1"
+    "ticketamount": "5"
   },
   "ticket2": {
     "departdate": "8/18/2020",
     "departure": "Nha Trang",
-    "arrival": "Sài Gòn",
+    "arrival": "Đà Nẵng",
     "seattype": "Soft seat with air conditioner",
-    "ticketamount": "5"
+    "ticketamount": "1"
   },
   "price1": {
     "departure": "Sài Gòn",

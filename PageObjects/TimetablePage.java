@@ -6,14 +6,14 @@ import org.openqa.selenium.WebElement;
 public class TimetablePage extends GeneralPage {
     
     public TimetablePage (WebDriver webDriver){
-        this.driver = webDriver;
+        driver = webDriver;
         
     }
 
     //Elements
 
     protected WebElement getLinkByDepartAndArriveStation(String linkName, String departStation, String arriveStation){
-        return this.driver.findElement(By.xpath("//td[count(//th[text()='Depart Station']//preceding-sibling::th)+1][text()='"+departStation+"']//ancestor::tr//td[count(//th[text()='Arrive Station']//preceding-sibling::th)+1][text()='"+arriveStation+"']//ancestor::tr//td[count(//th[text()='"+linkName+"']//preceding-sibling::th)+1]//a"));
+        return driver.findElement(By.xpath("//td[count(//th[text()='Depart Station']//preceding-sibling::th)+1][text()='"+departStation+"']//ancestor::tr//td[count(//th[text()='Arrive Station']//preceding-sibling::th)+1][text()='"+arriveStation+"']//ancestor::tr//td[count(//th[text()='"+linkName+"']//preceding-sibling::th)+1]//a"));
     }
 
     //Methods
